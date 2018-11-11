@@ -1,0 +1,16 @@
+{
+    "host": "cxcv92.dothome.co.kr",
+    "username": "cxcv92",
+    "password": "tksguqvm123!",
+    "remotePath": "/html",
+    "protocol": "ftp",
+    "port": 21,
+    "fileNameEncoding": "EUC-KR",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}
