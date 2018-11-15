@@ -17,8 +17,8 @@
 
     $rows = array();
     while($r = mysql_fetch_assoc($result)) {
-        $rows[] = $r;
+        $rows['idx'] = $r['idx'];
     }
-    
+
     echo json_encode($rows);
 ?>
