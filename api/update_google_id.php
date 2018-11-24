@@ -8,11 +8,13 @@
     $device_id = $_POST["device_id"];
 
     global $connect;
-    $sql    = 'UPDATE '.$user_type.' SET device_id = \"'.$device_id.'\" WHERE idx = '.$user_id;
+    $sql    = 'UPDATE '.$user_type.' SET device_id = "'.$device_id.'" WHERE idx = '.$user_id;
     $result = mysql_query($sql, $connect);
 
 
     $rows = array();
+    $rows["message"] = mysql_error($connect);
+    $rows["query"] = $sql;
     if (!$result) {
         $rows["status"] = "fail";
     } else {
