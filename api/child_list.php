@@ -6,7 +6,7 @@
     $driver_id = $_GET["driver_id"]; 
 
     global $connect;
-    $sql    = 'SELECT c.idx, c.name, c.beacon_id, p.lat, p.lng FROM driver AS d, child AS c, parent AS p WHERE d.idx = '.$driver_id.' AND p.driver_idx = d.idx AND p.idx = c.parent_idx AND p.absent = 0';
+    $sql    = 'SELECT c.idx, c.name, c.beacon_id, p.lat, p.lng, p.device_id, p.idx AS parentId FROM driver AS d, child AS c, parent AS p WHERE d.idx = '.$driver_id.' AND p.driver_idx = d.idx AND p.idx = c.parent_idx AND p.absent = 0';
     $result = mysql_query($sql, $connect);
 
     if (!$result) {
@@ -23,8 +23,10 @@
                 $latlng["lng"] = floatval($r["lng"]);
             $rows['idx'] = $r['idx'];
             $rows['name'] = $r['name'];
-            $rows['beacon_id'] = $r['beacon_id'];
+            $rows['beaconId'] = $r['beacon_id'];
             $rows['latLng'] = $latlng;
+            $rows['deviceId'] = $r['device_id'];
+            $rows['parentId'] = $r['parentId']; 
         $ret[$index] = $rows; 
         $index++;
     }

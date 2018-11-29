@@ -21,6 +21,13 @@
     } else {
         $rows["status"] = "success";
     }
-    
+
+    $sql    = 'SELECT d.device_id AS id FROM driver AS d, parent AS p WHERE p.driver_idx = d.idx AND p.idx = '.$parent_id;
+    $result2 = mysql_query($sql, $connect);
+
+    while($r = mysql_fetch_assoc($result2)) {
+        $rows["driverId"] = $r["id"];
+    }
+
     echo json_encode($rows);
 ?>
