@@ -3,7 +3,7 @@
     
     include_once("../db.php");
 
-    $parent_id = $_POST["parent_id"]; 
+    $parent_id = $_GET["parent_id"]; 
 
     $driver_lat = 0;
     $driver_lng = 0;
@@ -43,9 +43,11 @@
     }
 
     if ($child_lat != 0 && $child_lng != 0) {
+        $rows["who"] = "child";
         $rows["lat"] = $child_lat; 
         $rows["lng"] = $child_lng; 
     } else {
+        $rows["who"] = "bus";
         $rows["lat"] = $driver_lat; 
         $rows["lng"] = $driver_lng;
     }
